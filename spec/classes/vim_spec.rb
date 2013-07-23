@@ -8,7 +8,11 @@ describe 'vim' do
   it do
     should contain_package('vim')
 
-    should contain_repository("/home/jivago/.vim/vim-pathogen")
+    should contain_vcsrepo("/home/jivago/.vim/vim-pathogen").with({
+      'ensure'   => 'present',
+      'provider' => 'git',
+      'source'   => 'https://github.com/tpope/vim-pathogen.git',
+    })
     should contain_file("/home/jivago/.vim/autoload").with({
       'ensure'    => 'directory',
       'recurse'   => true,

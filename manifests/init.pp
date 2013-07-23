@@ -22,8 +22,10 @@ class vim {
     recurse => true,
   }
 
-  repository { "${vimdir}/vim-pathogen":
-    source => 'tpope/vim-pathogen'
+  vcsrepo { "${vimdir}/vim-pathogen":
+    ensure   => present,
+    provider => git,
+    source   => 'https://github.com/tpope/vim-pathogen.git'
   }
 
   file { "${vimdir}/autoload/pathogen.vim":

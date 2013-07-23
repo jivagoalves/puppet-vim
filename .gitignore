@@ -5,6 +5,6 @@
 /spec/fixtures/Puppetfile.lock
 /spec/fixtures/modules/boxen/
 /spec/fixtures/modules/stdlib/
-/spec/fixtures/modules/repository/
+/spec/fixtures/modules/vcsrepo/
 /spec/fixtures/modules/boxen/
 /spec/fixtures/vendor
