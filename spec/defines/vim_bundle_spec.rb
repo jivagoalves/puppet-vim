@@ -2,12 +2,12 @@
 require 'spec_helper'
 
 describe 'vim::bundle' do
-  let(:title) { 'jhaals/puppet-vim' }
-  let(:facts) { { :boxen_user => 'jhaals' } }
+  let(:title) { 'jivagoalves/puppet-vim' }
+  let(:facts) { { :id => 'jivago' } }
 
   it do
-    should contain_repository('/Users/jhaals/.vim/bundle/puppet-vim').with({
-      'source' => 'jhaals/puppet-vim'
+    should contain_repository('/home/jivago/.vim/bundle/puppet-vim').with({
+      'source' => 'jivagoalves/puppet-vim'
     })
   end
 end

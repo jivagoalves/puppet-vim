@@ -1,10 +1,8 @@
-# vim Puppet Module for Boxen
+# vim Puppet Module for Linux
 
 Install [vim](http://www.vim.org/) along with [vim-pathogen](https://github.com/tpope/vim-pathogen), an easy way to install vim bundles.
 
-[![Build Status](https://travis-ci.org/boxen/puppet-vim.png?branch=master)](https://travis-ci.org/boxen/puppet-vim)
-
-This package won't interfere the puppet-macvim package. Please note that you __must__ manage your .vimrc using boxen since this module installs pathogen in .vimrc
+This is a fork from [boxen/puppet-vim](https://github.com/boxen/puppet-vim). The code was changed to consider a regular Linux box.
 
 ## Usage
 The following example will install vim, pathogen and the vim_bundle you specify in your ~/.vim/bundle directory
@@ -17,8 +15,8 @@ The following example will install vim, pathogen and the vim_bundle you specify 
 
     # Example of how you can manage your .vimrc
     file { "${vim::vimrc}":
-      target  => "/Users/${::boxen_user}/.dotfiles/.vimrc",
-      require => Repository["/Users/${::boxen_user}/.dotfiles"]
+      target  => "/home/${id}/.dotfiles/.vimrc",
+      require => Repository["/home/${id}/.dotfiles"]
     }
 
     # Or, simply,
@@ -29,3 +27,7 @@ The following example will install vim, pathogen and the vim_bundle you specify 
 * `boxen`
 * `boxen-repository`
 * `puppetlabs-stdlib`
+
+## Thanks
+
+Thanks to [boxen/puppet-vim](https://github.com/boxen/puppet-vim)'s contributors.
