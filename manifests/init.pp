@@ -34,7 +34,7 @@ class vim {
       File[$vimdir],
       File["${vimdir}/autoload"],
       File["${vimdir}/bundle"],
-      Repository["${vimdir}/vim-pathogen"]
+      Vcsrepo["${vimdir}/vim-pathogen"]
     ]
   }
 }
