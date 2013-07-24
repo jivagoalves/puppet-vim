@@ -24,8 +24,7 @@ The following example will install vim, pathogen and the vim_bundle you specify 
 
 ## Required Puppet Modules
 
-* `boxen`
-* `boxen-repository`
+* `puppetlabs-vcsrepo`
 * `puppetlabs-stdlib`
 
 ## Thanks
