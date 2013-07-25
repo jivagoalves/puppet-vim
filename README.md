@@ -1,11 +1,11 @@
 # vim Puppet Module for Linux
 
-Install [vim](http://www.vim.org/) along with [vim-pathogen](https://github.com/tpope/vim-pathogen), an easy way to install vim bundles.
+Install [vim-pathogen](https://github.com/tpope/vim-pathogen), an easy way to install vim bundles.
 
 This is a fork from [boxen/puppet-vim](https://github.com/boxen/puppet-vim). The code was changed to consider a regular Linux box.
 
 ## Usage
-The following example will install vim, pathogen and the vim_bundle you specify in your ~/.vim/bundle directory
+The following example will install pathogen and the vim_bundle you specify in your ~/.vim/bundle directory
 
     include vim
     vim::bundle { [
@@ -13,14 +13,25 @@ The following example will install vim, pathogen and the vim_bundle you specify 
       'sjl/gundo.vim'
     ]: }
 
-    # Example of how you can manage your .vimrc
-    file { "${vim::vimrc}":
-      target  => "/home/${id}/.dotfiles/.vimrc",
-      require => Repository["/home/${id}/.dotfiles"]
+You can also manage your .vimrc with something like:
+
+    $homedir  = "/home/${id}"
+    $codepath = "${homedir}/code"
+
+    # dotfiles repo
+    vcsrepo { "${codepath}/dotfiles":
+      ensure   => latest,
+      provider => git,
+      source   => 'https://github.com/jivagoalves/dotfiles.git',
+      revision => 'master'
     }
 
-    # Or, simply,
-    file { "${vim::vimrc}": ensure => exists }
+    # Link .vimrc to file from dotfiles repo
+    file { "${vim::vimrc}":
+      ensure  => link,
+      target  => "${codepath}/dotfiles/vimrc",
+      require => Vcsrepo["${codepath}/dotfiles"]
+    }
 
 ## Required Puppet Modules
 
