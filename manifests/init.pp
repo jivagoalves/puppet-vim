@@ -27,6 +27,7 @@ class vim {
   }
 
   file { "${vimdir}/autoload/pathogen.vim":
+    ensure  => link,
     target  => "${vimdir}/vim-pathogen/autoload/pathogen.vim",
     require => [
       File[$vimdir],
