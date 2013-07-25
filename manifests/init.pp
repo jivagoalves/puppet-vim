@@ -13,8 +13,6 @@ class vim {
   $vimrc = "${home}/.vimrc"
   $vimdir = "${home}/.vim"
 
-  package { 'vim': }
-
   file { [$vimdir,
     "${vimdir}/autoload",
     "${vimdir}/bundle"]:

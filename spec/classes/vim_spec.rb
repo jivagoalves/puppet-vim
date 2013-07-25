@@ -6,8 +6,6 @@ describe 'vim' do
   end
 
   it do
-    should contain_package('vim')
-
     should contain_vcsrepo("/home/jivago/.vim/vim-pathogen").with({
       'ensure'   => 'present',
       'provider' => 'git',
@@ -23,7 +21,7 @@ describe 'vim' do
         'File[/home/jivago/.vim]',
         'File[/home/jivago/.vim/autoload]',
         'File[/home/jivago/.vim/bundle]',
-        'Repository[/home/jivago/.vim/vim-pathogen]']
+        'Vcsrepo[/home/jivago/.vim/vim-pathogen]']
     })
     should contain_file("/home/jivago/.vim/bundle").with({
       'ensure'    => 'directory',
